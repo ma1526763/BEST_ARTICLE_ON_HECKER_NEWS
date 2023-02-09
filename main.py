@@ -4,12 +4,13 @@ from smtplib import SMTP
 import requests
 from bs4 import BeautifulSoup
 
+max_page_number = 28
 rank_list = []
 title_list = []
 link_list = []
 article_list_info = []
 score_list = []
-for i in range(1, 28):
+for i in range(1, max_page_number):
     soup = BeautifulSoup(requests.get(f"https://news.ycombinator.com/?p={i}").text, 'html.parser')
     for rank in soup.select('.rank'):
         rank_list.append(rank.text)
